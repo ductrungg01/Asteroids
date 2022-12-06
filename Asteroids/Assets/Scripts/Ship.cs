@@ -8,9 +8,10 @@ public class Ship : MonoBehaviour
     Rigidbody2D _rb;
     float _radius;
     Vector2 thrustDirection = new Vector2(1, 0);
+    float _rotateDegreesPerSecond = 100.0f;
 
     [SerializeField]
-    private float _thrustForce = 50.0f;
+    private float _thrustForce = 20.0f;
     #endregion
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,17 @@ public class Ship : MonoBehaviour
         if (Input.GetAxis("Thrust") > 0)
         {
             _rb.AddForce(thrustDirection * _thrustForce);
+        }
+
+        float rotationInput = Input.GetAxis("Rotate");
+        if (rotationInput != 0)
+        {
+            float rotationAmount = _rotateDegreesPerSecond * Time.deltaTime;
+            if (rotationInput < 0)
+            {
+                rotationAmount *= -1;
+            }
+            transform.Rotate(Vector3.forward, rotationAmount);
         }
     }
 }
