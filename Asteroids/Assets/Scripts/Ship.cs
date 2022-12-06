@@ -57,6 +57,12 @@ public class Ship : MonoBehaviour
                 rotationAmount *= -1;
             }
             transform.Rotate(Vector3.forward, rotationAmount);
+            float angle = transform.rotation.eulerAngles.z * (Mathf.PI / 180.0f);
+            Debug.Log(angle);
+            thrustDirection = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+            Debug.Log(thrustDirection);
         }
+        //Debug.Log(transform.rotation.eulerAngles);
+        //Debug.Log(thrustDirection);
     }
 }
