@@ -28,6 +28,15 @@ public class Ship : MonoBehaviour
         if (pos.x - _radius >= ScreenUtils.ScreenRight)
         {
             this.transform.position = new Vector3(ScreenUtils.ScreenLeft, pos.y, pos.z);
+        } else if (pos.x + _radius <= ScreenUtils.ScreenLeft)
+        {
+            this.transform.position = new Vector3(ScreenUtils.ScreenRight, pos.y, pos.z);
+        } else if (pos.y - _radius >= ScreenUtils.ScreenTop)
+        {
+            this.transform.position = new Vector3(pos.x, ScreenUtils.ScreenBottom, pos.z);
+        } else if (pos.y + _radius <= ScreenUtils.ScreenBottom)
+        {
+            this.transform.position = new Vector3(pos.x, ScreenUtils.ScreenTop, pos.z);
         }
     }
 
