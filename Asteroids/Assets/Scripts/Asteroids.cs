@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Asteroids : MonoBehaviour
 {
+    [SerializeField]
+    private Sprite[] sprites;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,5 +20,9 @@ public class Asteroids : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(
             direction * magnitude,
             ForceMode2D.Impulse);
+
+        // Random the Asteroid's sprite
+        System.Random rnd = new System.Random();
+        GetComponent<SpriteRenderer>().sprite = sprites[rnd.Next(sprites.Length)];
     }
 }
