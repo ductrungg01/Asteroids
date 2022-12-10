@@ -13,24 +13,23 @@ public class ScreenWrapper : MonoBehaviour
         _radius = _circleCollider.radius;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnBecameInvisible()
     {
         Vector3 pos = this.transform.position;
 
-        if (pos.x - _radius >= ScreenUtils.ScreenRight)
+        if (pos.x > ScreenUtils.ScreenRight)
         {
             this.transform.position = new Vector3(ScreenUtils.ScreenLeft, pos.y, pos.z);
         }
-        else if (pos.x + _radius <= ScreenUtils.ScreenLeft)
+        else if (pos.x < ScreenUtils.ScreenLeft)
         {
             this.transform.position = new Vector3(ScreenUtils.ScreenRight, pos.y, pos.z);
         }
-        else if (pos.y - _radius >= ScreenUtils.ScreenTop)
+        else if (pos.y > ScreenUtils.ScreenTop)
         {
             this.transform.position = new Vector3(pos.x, ScreenUtils.ScreenBottom, pos.z);
         }
-        else if (pos.y + _radius <= ScreenUtils.ScreenBottom)
+        else if (pos.y < ScreenUtils.ScreenBottom)
         {
             this.transform.position = new Vector3(pos.x, ScreenUtils.ScreenTop, pos.z);
         }
