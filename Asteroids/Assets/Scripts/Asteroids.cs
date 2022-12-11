@@ -16,11 +16,14 @@ public class Asteroids : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = sprites[rnd.Next(sprites.Length)];
     }
 
-    public void Initialize(Direction direction)
+    public void Initialize(Direction direction, Vector3 position)
     {
+        // set the position of the asteroid
+        this.transform.position = position;
+
         // apply impulse force to get game object moving
-        const float MinImpulseForce = 3f;
-        const float MaxImpulseForce = 5f;
+        const float MinImpulseForce = 1f;
+        const float MaxImpulseForce = 2f;
         float angle = Random.Range(0, 30);
         switch (direction)
         {
