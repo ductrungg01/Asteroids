@@ -11,8 +11,6 @@ public class Asteroids : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Initialize(Direction.Right);
-
         // Random the Asteroid's sprite
         System.Random rnd = new System.Random();
         GetComponent<SpriteRenderer>().sprite = sprites[rnd.Next(sprites.Length)];
