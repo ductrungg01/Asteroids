@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Asteroids : MonoBehaviour
@@ -10,19 +11,34 @@ public class Asteroids : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // apply impulse force to get game object moving
-        const float MinImpulseForce = 3f;
-        const float MaxImpulseForce = 5f;
-        float angle = Random.Range(0, 2 * Mathf.PI);
-        Vector2 direction = new Vector2(
-            Mathf.Cos(angle), Mathf.Sin(angle));
-        float magnitude = Random.Range(MinImpulseForce, MaxImpulseForce);
-        GetComponent<Rigidbody2D>().AddForce(
-            direction * magnitude,
-            ForceMode2D.Impulse);
-
         // Random the Asteroid's sprite
         System.Random rnd = new System.Random();
         GetComponent<SpriteRenderer>().sprite = sprites[rnd.Next(sprites.Length)];
+    }
+
+    public void Initialize(Direction direction, Vector3 position)
+    {
+        // set the position of the asteroid
+        this.transform.position = position;
+
+        // apply impulse force to get game object moving
+        const float MinImpulseForce = 1f;
+        const float MaxImpulseForce = 2f;
+        float angle = Random.Range(0, 30);
+        switch (direction)
+        {
+            case Direction.Up: angle += 75; break;
+            case Direction.Left: angle += 150; break;
+            case Direction.Down: angle += 225; break;
+            case Direction.Right: angle += 300; break;
+        }
+        angle *= Mathf.Deg2Rad;
+
+        Vector2 moveDirection = new Vector2(
+            Mathf.Cos(angle), Mathf.Sin(angle));
+        float magnitude = Random.Range(MinImpulseForce, MaxImpulseForce);
+        GetComponent<Rigidbody2D>().AddForce(
+            moveDirection * magnitude,
+            ForceMode2D.Impulse);
     }
 }

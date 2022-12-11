@@ -45,4 +45,12 @@ public class Ship : MonoBehaviour
             thrustDirection = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
