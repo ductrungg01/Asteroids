@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Asteroid
   - Ship
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Ship
+    uniqueID: 426325801
+    locked: 0
+  - name: Bullet
+    uniqueID: 2775634701
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

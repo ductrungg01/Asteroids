@@ -11,6 +11,9 @@ public class Ship : MonoBehaviour
     float _rotateDegreesPerSecond = 100.0f;
 
     [SerializeField]
+    private GameObject _prefabBullet;
+
+    [SerializeField]
     private float _thrustForce = 20.0f;
     #endregion
     // Start is called before the first frame update
@@ -22,7 +25,12 @@ public class Ship : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            GameObject newBullet = Instantiate(_prefabBullet, new Vector3(), Quaternion.identity);
+            newBullet.GetComponent<Bullet>().ApplyForce(thrustDirection);
+            
+        }
     }
 
     private void FixedUpdate()
