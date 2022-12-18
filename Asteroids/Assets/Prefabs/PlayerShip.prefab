@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8450114637146402987}
   - component: {fileID: 6185902429939633394}
   - component: {fileID: -3281899135191457365}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerShip
   m_TagString: Ship
   m_Icon: {fileID: 0}
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 193728aac3b89f14ab5677869acfb2dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _prefabBullet: {fileID: 0}
   _thrustForce: 20
 --- !u!58 &-3281899135191457365
 CircleCollider2D:

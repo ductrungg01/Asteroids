@@ -22,8 +22,8 @@ public class Asteroids : MonoBehaviour
         this.transform.position = position;
 
         // apply impulse force to get game object moving
-        const float MinImpulseForce = 1f;
-        const float MaxImpulseForce = 2f;
+        const float MinImpulseForce = 0.5f;
+        const float MaxImpulseForce = 1f;
         float angle = Random.Range(0, 30);
         switch (direction)
         {
