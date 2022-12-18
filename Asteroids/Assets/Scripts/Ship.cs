@@ -28,6 +28,7 @@ public class Ship : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             GameObject newBullet = Instantiate(_prefabBullet, new Vector3(), Quaternion.identity);
+            newBullet.GetComponent<Bullet>().ApplyForce(thrustDirection);
             
         }
     }
